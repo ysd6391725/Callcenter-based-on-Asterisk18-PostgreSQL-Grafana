@@ -1,6 +1,5 @@
-# docker-asterisk
-
-[![Build Status](https://travis-ci.org/dougbtv/docker-asterisk.svg?branch=master)](https://travis-ci.org/dougbtv/docker-asterisk)
+# A simple callcenter with Asterisk 16, PostgreSQL and Grafana
+# Asterisk16-PostgreSQL-Grafana
 
 A set of Dockerfiles for running asterisk (and a FastAGI, one for PHP as it stands)
 
