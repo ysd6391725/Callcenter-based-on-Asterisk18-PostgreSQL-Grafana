@@ -1,7 +1,6 @@
 A simple callcenter with Asterisk 16, PostgreSQL and Grafana
 # Asterisk16-PostgreSQL-Grafana
 
-A set of Dockerfiles for running asterisk.
 Just pull and run:
 
     # Grafana 
