@@ -1,4 +1,4 @@
-# A simple callcenter with Asterisk 16, PostgreSQL and Grafana
+A simple callcenter with Asterisk 16, PostgreSQL and Grafana
 # Asterisk16-PostgreSQL-Grafana
 
 A set of Dockerfiles for running asterisk (and a FastAGI, one for PHP as it stands)
