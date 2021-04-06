@@ -1,12 +1,7 @@
 A simple callcenter with Asterisk 16, PostgreSQL and Grafana
 # Asterisk16-PostgreSQL-Grafana
 
-A set of Dockerfiles for running asterisk (and a FastAGI, one for PHP as it stands)
-
-Also checkout my blog article @ [dougbtv.com](http://dougbtv.com/2014/10/02/docker-and-asterisk/).
-
-You can [pull the image from dockerhub](https://registry.hub.docker.com/u/dougbtv/asterisk/).
-
+A set of Dockerfiles for running asterisk.
 Which is as simple as running:
 
                                      Security fix only             EOL
