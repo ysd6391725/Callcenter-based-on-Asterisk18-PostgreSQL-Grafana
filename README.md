@@ -8,10 +8,14 @@ Just pull and run:
 
     # Grafana 
     docker pull 6391725ysd/grafana
-    
-    # PostgreSQL
-    docker pull 6391725ysd/asterisk16-postgresql-odbc
+    docker run -d --name my_grafana -v /home/records/:/usr/share/grafana/public/build/records --net=host 6391725ysd/grafana
     
     # Asterisk 16
+    docker pull 6391725ysd/asterisk16-postgresql-odbc
+    docker run -d --name my_asterisk16 -v /home/records/:/var/spool/asterisk/monitor/ --net=host 6391725ysd/asterisk16-postgresql-odbc
+    
+    # PostgreSQL
     docker pull 6391725ysd/postgresql
+    
+    
 
