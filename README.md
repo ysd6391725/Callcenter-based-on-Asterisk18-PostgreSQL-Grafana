@@ -8,8 +8,9 @@ A simple callcenter with Asterisk 16, PostgreSQL and Grafana
  Centos7 base images
  Asterisk 16.16.2 built from source with postgresql-odbc. 
 
-Grafana 
+ [Grafana](https://hub.docker.com/repository/docker/6391725ysd/grafana)  
 based on official image [grafana](https://hub.docker.com/r/grafana/grafana) 
+
 # Installation
 
 Just pull and run:
