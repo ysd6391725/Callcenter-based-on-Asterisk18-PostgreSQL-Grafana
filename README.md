@@ -10,7 +10,10 @@ A simple callcenter with Asterisk 16, PostgreSQL and Grafana
 
  [Grafana](https://hub.docker.com/repository/docker/6391725ysd/grafana)  
  Based on official image [grafana](https://hub.docker.com/r/grafana/grafana) 
-
+ 
+  [PostgreSQL](https://hub.docker.com/repository/docker/6391725ysd/postgresql)  
+ Based on official image [PostgreSQL](https://hub.docker.com/_/postgres) 
+ 
 # Installation
 
 Just pull and run:
