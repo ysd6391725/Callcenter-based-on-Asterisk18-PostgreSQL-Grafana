@@ -31,3 +31,6 @@ Just pull and run:
     
     
 
+Grafana default login anf password:
+- admin
+- Pa$$w0rd
