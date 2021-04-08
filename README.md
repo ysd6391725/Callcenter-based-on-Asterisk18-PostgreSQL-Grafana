@@ -32,7 +32,7 @@ Just pull and run:
     
     
 
-Grafana default login anf password:
+Grafana default login and password:
 - admin
 - Pa$$w0rd
 
@@ -107,4 +107,10 @@ queue_log has a TRIGGER which start function "q_replace"
 That function fills the cdr_queue_log table. Which makes it more appropriate for using.
 
 ![image](https://user-images.githubusercontent.com/73586088/114003039-3f961100-987f-11eb-81e4-1b1733cfdb49.png)
+
+Table operators basically use for choosing operator in grafana.!
+[image](https://user-images.githubusercontent.com/73586088/114004844-dadbb600-9880-11eb-8680-0b056873ce9d.png)
+![image](https://user-images.githubusercontent.com/73586088/114004939-ec24c280-9880-11eb-8d07-de52e669427b.png)
+
+
 
