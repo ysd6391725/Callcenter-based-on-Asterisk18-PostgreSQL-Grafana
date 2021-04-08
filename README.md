@@ -35,3 +35,11 @@ Just pull and run:
 Grafana default login anf password:
 - admin
 - Pa$$w0rd
+
+# PostgreSQL tables structure
+
+Database asteriskcdrdb consist of four tables, such as: 
+- cdr
+- cdr_queue_log
+- operators
+- queue_log
