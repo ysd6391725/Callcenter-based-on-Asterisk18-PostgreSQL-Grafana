@@ -110,7 +110,8 @@ That function fills the cdr_queue_log table. Which makes it more appropriate for
 
 Table operators basically use for choosing operator in grafana.!
 [image](https://user-images.githubusercontent.com/73586088/114004844-dadbb600-9880-11eb-8680-0b056873ce9d.png)
-![image](https://user-images.githubusercontent.com/73586088/114004939-ec24c280-9880-11eb-8d07-de52e669427b.png)
+On dashboard
+[image](https://user-images.githubusercontent.com/73586088/114004939-ec24c280-9880-11eb-8d07-de52e669427b.png)
 
 
 
