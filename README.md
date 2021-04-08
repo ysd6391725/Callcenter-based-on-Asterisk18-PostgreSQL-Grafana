@@ -104,7 +104,7 @@ q_replace function:
 	   END; 
     $function$;
 
-That function fills the cdr_queue_log table.
+That function fills the cdr_queue_log table. Which makes it more appropriate for using.
 
 ![image](https://user-images.githubusercontent.com/73586088/114003039-3f961100-987f-11eb-81e4-1b1733cfdb49.png)
 
