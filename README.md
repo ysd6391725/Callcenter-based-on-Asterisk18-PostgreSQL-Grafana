@@ -43,15 +43,15 @@ Database asteriskcdrdb consist of four tables:
 - queue_log (incoming calls from queue)
 - cdr_queue_log (incoming calls from queue)
 - operators (list of operators with name and number)
-- 
+
 An incoming call enters the queue, an entry is created in the queue_log table
 ![image](https://user-images.githubusercontent.com/73586088/113996119-ad8b0a00-9878-11eb-8310-dc9955c28b1d.png)
 
-queue_log consist an TRIGGER which start function "q_replace"
+queue_log has a TRIGGER which start function "q_replace"
 
 ![image](https://user-images.githubusercontent.com/73586088/113996316-e0cd9900-9878-11eb-9e51-3dc6db536456.png)
 
-q_replace function:
+"q_replace" function:
 
     CREATE OR REPLACE FUNCTION public.q_replace()
     RETURNS trigger
