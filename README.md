@@ -1,13 +1,13 @@
-This is a simple callcenter based on Asterisk 16, PostgreSQL and Grafana
+This is a simple callcenter based on Asterisk 18, PostgreSQL and Grafana
 
-# Asterisk16-PostgreSQL-Grafana
+# Asterisk18-PostgreSQL-Grafana
 ![image](https://user-images.githubusercontent.com/73586088/113707049-2bc4a080-9701-11eb-9a48-5464f6d9a4d8.png)
 
 # Description
-[Asterisk16](https://hub.docker.com/repository/docker/6391725ysd/asterisk16-postgresql-odbc) 
+[Asterisk18](https://hub.docker.com/repository/docker/6391725ysd/asterisk-18.3) 
  Based on:
- - Centos7 base images
- - Asterisk 16.16.2 built from source with postgresql-odbc. 
+ - Alpine base images
+ - Asterisk 18.3.0 built from source with postgresql-odbc. 
 
  [Grafana](https://hub.docker.com/repository/docker/6391725ysd/grafana)  
  Based on official image [grafana](https://hub.docker.com/r/grafana/grafana) 
@@ -23,9 +23,9 @@ Just pull and run:
     docker pull 6391725ysd/grafana
     docker run -d --name my_grafana -v /home/records/:/usr/share/grafana/public/build/records --net=host 6391725ysd/grafana
     
-    # Asterisk 16
+    # Asterisk 18
     docker pull 6391725ysd/asterisk16-postgresql-odbc
-    docker run -d --name my_asterisk16 -v /home/records/:/var/spool/asterisk/monitor/ --net=host 6391725ysd/asterisk16-postgresql-odbc
+    docker run -d --name my_asterisk18-v /home/records/:/var/spool/asterisk/monitor/ --net=host 6391725ysd/asterisk-18.3
     
     # PostgreSQL
     docker pull 6391725ysd/postgresql
@@ -57,48 +57,35 @@ queue_log has a TRIGGER which start function "q_replace"
     RETURNS trigger
     LANGUAGE plpgsql
     AS $function$
-       declare 
-         dt varchar;
-         dt1 varchar;
-         dt2 varchar;
-         dt3 varchar;
-         dt4 varchar;
-         dt5 varchar;
-	   begin
-	      dt := split_part(NEW.data, '|', 1);
-	      dt1 := split_part(NEW.data, '|', 2);
-	      dt2 := split_part(NEW.data, '|', 3);
-	      dt3 := split_part(NEW.data, '|', 4);
-	      dt4 := split_part(NEW.data, '|', 5);
-	      dt5 := split_part(NEW.data, '|', 6);
-
+      	   begin
            IF (NEW.event = 'ENTERQUEUE')  THEN
-              UPDATE cdr_queue_log set  src = dt1 , queuename =  NEW.queuename where uniqueid = NEW.callid ;
-           END IF;
-	   
-           IF (NEW.event = 'DID') THEN
-              Insert into cdr_queue_log (calldate, uniqueid, queuename, did,filename) VALUES (NEW.time,NEW.callid , NEW.queuename ,dt,dt1);
-           END IF;       
-	   
-           IF (NEW.event = 'COMPLETECALLER')  OR (NEW.event = 'COMPLETEAGENT')  THEN
-              UPDATE cdr_queue_log set  wait_time = dt1, billsec = dt2  where uniqueid = NEW.callid;
-           END IF;
+           UPDATE cdr_queue_log set  src = NEW.data2 , queuename =  NEW.queuename where uniqueid = NEW.callid ;
+        END IF;
 
-           IF (NEW.event = 'ABANDON')  THEN
-              UPDATE cdr_queue_log set  wait_time = dt2, disposition = 'NOANSWER',dst = 'nobody' where uniqueid = NEW.callid;
-           END IF;
-	   
-	   IF (NEW.event = 'CONNECT')  THEN
-              UPDATE cdr_queue_log set  wait_time = dt1, disposition = 'ANSWER', dst = NEW.agent where uniqueid = NEW.callid;
-           END IF;
+        IF (NEW.event = 'DID') THEN
+           Insert into cdr_queue_log (calldate, uniqueid, queuename, did,filename) VALUES (NEW.time,NEW.callid , NEW.queuename ,NEW.data1,NEW.data2);
 
-           IF (NEW.event = 'TRANSFER') THEN
-              UPDATE cdr_queue_log set  wait_time = dt3, billsec = dt4  where uniqueid = NEW.callid;
-           END IF;
+          END IF;       
+       
+        IF (NEW.event = 'COMPLETECALLER')  OR (NEW.event = 'COMPLETEAGENT')  THEN
+           UPDATE cdr_queue_log set  wait_time = NEW.data2, billsec = NEW.data3  where uniqueid = NEW.callid;
+        END IF;
 
-           IF (NEW.event = 'EXITWITHTIMEOUT')  THEN
-              UPDATE cdr_queue_log set  wait_time = dt3, disposition = 'NOANSWER' where uniqueid = NEW.callid;
-           END if;
+        IF (NEW.event = 'ABANDON')  THEN
+           UPDATE cdr_queue_log set  wait_time = NEW.data3, disposition = 'NOANSWER',dst = 'nobody' where uniqueid = NEW.callid;
+        END IF;
+
+        IF (NEW.event = 'CONNECT')  THEN
+           UPDATE cdr_queue_log set  wait_time = NEW.data2, disposition = 'ANSWER', dst = NEW.agent where uniqueid = NEW.callid;
+        END IF;
+
+        IF (NEW.event = 'TRANSFER') THEN
+           UPDATE cdr_queue_log set  wait_time = NEW.data4, billsec = NEW.data5  where uniqueid = NEW.callid;
+        END IF;
+
+        IF (NEW.event = 'EXITWITHTIMEOUT')  THEN
+           UPDATE cdr_queue_log set  wait_time = NEW.data4, disposition = 'NOANSWER' where uniqueid = NEW.callid;
+        END if;	
 	   
 	   RETURN NEW;
 	   END; 
