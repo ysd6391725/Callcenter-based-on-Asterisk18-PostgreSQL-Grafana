@@ -24,7 +24,7 @@ Just pull and run:
     docker run -d --name grafana -v /home/records/:/usr/share/grafana/public/build/records --net=host 6391725ysd/grafana
     
     # Asterisk 18
-    docker pull 6391725ysd/asterisk16-postgresql-odbc
+    docker pull 6391725ysd/asterisk-18.3
     docker run -d --name asterisk18 -v /home/records/:/var/spool/asterisk/monitor/ --net=host 6391725ysd/asterisk-18.3
     
     # PostgreSQL
