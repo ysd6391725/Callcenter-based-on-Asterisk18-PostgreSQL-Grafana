@@ -21,14 +21,15 @@ Just pull and run:
 
     # Grafana 
     docker pull 6391725ysd/grafana
-    docker run -d --name my_grafana -v /home/records/:/usr/share/grafana/public/build/records --net=host 6391725ysd/grafana
+    docker run -d --name grafana -v /home/records/:/usr/share/grafana/public/build/records --net=host 6391725ysd/grafana
     
     # Asterisk 18
     docker pull 6391725ysd/asterisk16-postgresql-odbc
-    docker run -d --name my_asterisk18-v /home/records/:/var/spool/asterisk/monitor/ --net=host 6391725ysd/asterisk-18.3
+    docker run -d --name asterisk18 -v /home/records/:/var/spool/asterisk/monitor/ --net=host 6391725ysd/asterisk-18.3
     
     # PostgreSQL
     docker pull 6391725ysd/postgresql
+    docker run -d --name postgresql --net=host 6391725ysd/postgresql
     
     
 
