@@ -35,7 +35,7 @@ Just pull and run:
 
 Grafana default login and password:
 - admin
-- Pa$$w0rd
+- n2r24h7
 
 # PostgreSQL tables structure
 
